@@ -25,3 +25,6 @@ jobs:
           pylint $(git ls-files '*.py')
       - name: Run Python black
         uses: psf/black@stable
+        with:
+          options: '--check --verbose'
+          src: './app'
