@@ -1,6 +1,6 @@
 
 # gh-actions-lab
 
-github actions lab
+A repository for testing out github actions.
 
 ## TODO
