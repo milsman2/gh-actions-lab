@@ -15,7 +15,6 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -28,3 +27,4 @@ jobs:
         with:
           options: '--check --verbose'
           src: './app'
+      - run: echo "🍏 This job's status is ${{ job.status }}."
