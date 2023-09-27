@@ -12,7 +12,7 @@ from config.settings import Settings
 async def get_sun_times() -> Result[SunResults, str]:
     settings = Settings()
     async with aiohttp.ClientSession() as session:
-        async with session.get(settings.test_url) as response:
+        async with session.get(settings.TEST_URL) as response:
             if response.status != 200:
                 return Err(f"Error fetching data. HTTP Status: {response.status}")
             data = await response.json()
