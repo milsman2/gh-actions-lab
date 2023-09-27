@@ -6,13 +6,13 @@ import asyncio
 from result import Ok, Err, Result
 from schemas.sun_results import SunResults
 from pydantic import ValidationError
+from config.settings import Settings
 
 
 async def get_sun_times() -> Result[SunResults, str]:
+    settings = Settings()
     async with aiohttp.ClientSession() as session:
-        async with session.get(
-            "https://api.sunrisesunset.io/json?lat=29.7604&lng=-95.3698&timezone=UTC&date=today"
-        ) as response:
+        async with session.get(settings.test_url) as response:
             if response.status != 200:
                 return Err(f"Error fetching data. HTTP Status: {response.status}")
             data = await response.json()
