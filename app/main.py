@@ -29,8 +29,8 @@ async def main():
     install()
     result = await get_sun_times()
     match result:
-        case Ok(data):
-            ic(data)
+        case Ok(sun_results):
+            ic(sun_results.model_dump_json(indent=2))
         case Err(error):
             ic(error)
 
