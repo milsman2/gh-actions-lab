@@ -7,6 +7,7 @@ from result import Ok, Err, Result
 from schemas.sun_results import SunResults
 from pydantic import ValidationError
 from config.settings import Settings
+from icecream import ic, install
 
 
 async def get_sun_times() -> Result[SunResults, str]:
@@ -25,12 +26,13 @@ async def get_sun_times() -> Result[SunResults, str]:
 
 
 async def main():
+    install()
     result = await get_sun_times()
     match result:
         case Ok(data):
-            print(data)
+            ic(data)
         case Err(error):
-            print(error)
+            ic(error)
 
 
 if __name__ == "__main__":
