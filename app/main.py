@@ -11,6 +11,7 @@ from icecream import ic, install
 
 
 async def get_sun_times() -> Result[SunResults, str]:
+    ic()
     settings = Settings()
     async with aiohttp.ClientSession() as session:
         async with session.get(str(settings.TEST_URL)) as response:
@@ -27,6 +28,7 @@ async def get_sun_times() -> Result[SunResults, str]:
 
 async def main():
     install()
+    ic()
     result = await get_sun_times()
     match result:
         case Ok(sun_results):
