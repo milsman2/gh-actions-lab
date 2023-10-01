@@ -31,5 +31,5 @@ jobs:
           pytest ./tests
       - name: Print sunrise/sunset data
         run: |
-          python ./app/main.py
+          python -m main
       - run: echo "🍏 This job's status is ${{ job.status }}."
