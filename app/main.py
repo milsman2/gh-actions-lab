@@ -1,13 +1,15 @@
 """
-Docstring for main.py
+This is the main entry point for the application.
 """
-import aiohttp
 import asyncio
-from result import Ok, Err, Result
-from schemas.sun_results import SunResults
-from pydantic import ValidationError
-from config.settings import Settings
+
+import aiohttp
 from icecream import ic, install
+from pydantic import ValidationError
+from result import Err, Ok, Result
+
+from app.config.settings import Settings
+from app.schemas.sun_results import SunResults
 
 
 async def get_sun_times() -> Result[SunResults, str]:

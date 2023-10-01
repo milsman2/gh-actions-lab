@@ -26,6 +26,9 @@ jobs:
         with:
           options: '--check --verbose'
           src: './app'
+      - name: Run pytest
+        run: |
+          pytest ./tests
       - name: Print sunrise/sunset data
         run: |
           python ./app/main.py
