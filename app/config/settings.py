@@ -2,8 +2,8 @@
 Configuration settings for the application.
 """
 
-from pydantic_settings import BaseSettings
 from pydantic import HttpUrl
+from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):

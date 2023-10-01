@@ -26,7 +26,10 @@ jobs:
         with:
           options: '--check --verbose'
           src: './app'
+      - name: Run pytest
+        run: |
+          pytest ./tests
       - name: Print sunrise/sunset data
         run: |
-          python ./app/main.py
+          python -m app.main
       - run: echo "🍏 This job's status is ${{ job.status }}."
