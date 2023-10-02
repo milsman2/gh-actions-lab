@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my_package"
+authors = [
+    {name = "Miles Kane", email = "milsman2@gmail.com"},
+]
+readme = "README.md"
+requires-python = ">=3.9"
+keywords = ["example", "setuptools"]
+dynamic = ["version"]
