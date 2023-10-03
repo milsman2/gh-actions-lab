@@ -8,8 +8,8 @@ from icecream import ic, install
 from pydantic import ValidationError
 from result import Err, Ok, Result
 
-from app.config.settings import Settings
-from app.schemas.sun_results import SunResults
+from src.config.settings import Settings
+from src.schemas.sun_results import SunResults
 
 
 async def get_sun_times() -> Result[SunResults, str]:

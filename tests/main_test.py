@@ -1,7 +1,7 @@
 """
 Testing settings.
 """
-from app.config.settings import Settings
+from src.config.settings import Settings
 from pydantic import HttpUrl
 
 

@@ -25,11 +25,11 @@ jobs:
         uses: psf/black@stable
         with:
           options: '--check --verbose'
-          src: './app'
+          src: './src'
       - name: Run pytest
         run: |
           pytest ./tests
       - name: Print sunrise/sunset data
         run: |
-          python -m app.main
+          python -m src.main
       - run: echo "🍏 This job's status is ${{ job.status }}."
