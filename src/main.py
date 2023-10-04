@@ -7,9 +7,9 @@ from icecream import ic
 from pydantic import ValidationError
 from result import Err, Ok
 
-from schemas.sun_results import SunResults
-from client.aiohttp_client import AioHttpClient
-from config.settings import Settings
+from src.schemas.sun_results import SunResults
+from src.client.aiohttp_client import AioHttpClient
+from src.config.settings import Settings
 
 
 async def get_sun_times() -> None:
