@@ -12,7 +12,7 @@ from client.aiohttp_client import AioHttpClient
 from config.settings import Settings
 
 
-async def get_sun_times() -> Result[SunResults, str]:
+async def get_sun_times() -> None:
     ic()
     settings = Settings()
     async with AioHttpClient() as http_client:
