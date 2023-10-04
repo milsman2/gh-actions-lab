@@ -5,7 +5,7 @@ import asyncio
 
 from icecream import ic
 from pydantic import ValidationError
-from result import Err, Ok, Result
+from result import Err, Ok
 
 from schemas.sun_results import SunResults
 from client.aiohttp_client import AioHttpClient
