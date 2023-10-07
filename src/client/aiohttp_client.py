@@ -27,8 +27,10 @@ class AioHttpClient:
             await self._session.close()
 
     async def get_data(self, url: str) -> Result[dict, str]:
+        ic()
         async with self._session as session:
             async with session.get(url) as response:
+                ic(response.status)
                 if response.status != 200:
                     return Err(f"Error fetching data. HTTP Status: {response.status}")
                 return Ok(await response.json())
