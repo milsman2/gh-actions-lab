@@ -9,14 +9,14 @@ from result import Err, Ok
 
 from src.schemas import SunResults
 from src.client import AioHttpClient
-from src.config import settings
+from src.config import app_settings
 
 
 async def get_sun_times() -> None:
     ic()
     async with AioHttpClient() as http_client:
         ic()
-        data = await http_client.get_data(str(settings.TEST_URL))
+        data = await http_client.get_data(str(app_settings.TEST_URL))
         match data:
             case Ok(data):
                 ic(data)
