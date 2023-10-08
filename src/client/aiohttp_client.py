@@ -37,4 +37,6 @@ class AioHttpClient:
                 ic(response.status)
                 if response.status != 200:
                     return Err(f"Error fetching data. HTTP Status: {response.status}")
-                return Ok(await response.json())
+                data = await response.json()
+                ic(data)
+                return Ok(data)
