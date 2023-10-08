@@ -23,11 +23,13 @@ class AioHttpClient:
 
     async def __aexit__(self, *args, **kwargs) -> None:
         ic()
-        if not self._session.closed:
+        if self._session is not None and not self._session.closed:
             await self._session.close()
 
     async def get_data(self, url: str) -> Result[dict, str]:
         ic()
+        if self._session is None:
+            return Err("Session not initialized.")
         async with self._session as session:
             async with session.get(url) as response:
                 ic(response.status)
