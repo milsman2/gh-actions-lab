@@ -24,8 +24,9 @@ class AioHttpClient:
 
     async def __aexit__(self, *args, **kwargs) -> None:
         ic()
-        if self._session is not None and not self._session.closed:
-            await self._session.close()
+        if self._session is not None:
+            if self._session.closed:
+                await self._session.close()
             ic(self._session.closed)
 
     async def get_data(self, url: str) -> Result[dict, str]:
