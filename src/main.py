@@ -26,7 +26,6 @@ async def get_sun_times() -> Result[SunResults, str]:
                     ic(e)
                     return Err(str(e))
                 else:
-                    ic(sun_data)
                     return Ok(sun_data)
             case Err(err):
                 ic(err)
@@ -35,9 +34,15 @@ async def get_sun_times() -> Result[SunResults, str]:
 
 async def main():
     ic()
-    await get_sun_times()
+    sun_times = await get_sun_times()
+    match sun_times:
+        case Ok(data):
+            ic(data)
+        case Err(err):
+            ic(err)
 
 
 if __name__ == "__main__":
+    ic.configureOutput(includeContext=True)
     ic()
     asyncio.run(main())
