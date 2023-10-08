@@ -16,18 +16,18 @@ async def get_sun_times() -> None:
     ic()
     async with AioHttpClient() as http_client:
         ic()
-        data = await http_client.get_data(str(app_settings.TEST_URL))
-        match data:
+        results = await http_client.get_data(str(app_settings.TEST_URL))
+        match results:
             case Ok(data):
-                ic(data)
+                try:
+                    SunResults(**data)
+                except ValidationError as e:
+                    ic(e)
+                else:
+                    ic(data)
+                    ic(SunResults(**data))
             case Err(err):
                 ic(err)
-        try:
-            SunResults(**data)
-        except ValidationError as e:
-            ic(e)
-        else:
-            ic(SunResults(**data))
 
 
 async def main():
