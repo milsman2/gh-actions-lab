@@ -14,3 +14,4 @@ def test_settings():
 
 def test_client():
     client = AioHttpClient()
+    assert client is not None
