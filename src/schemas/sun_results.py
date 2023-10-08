@@ -25,4 +25,3 @@ class Results(BaseModel):
 
 class SunResults(BaseModel):
     results: Results
-    status: str

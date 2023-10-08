@@ -19,18 +19,25 @@ class AioHttpClient:
     async def __aenter__(self):
         ic()
         self._session = aiohttp.ClientSession()
+        ic(self._session)
         return self
 
     async def __aexit__(self, *args, **kwargs) -> None:
         ic()
-        if not self._session.closed:
-            await self._session.close()
+        if self._session is not None:
+            if self._session.closed:
+                await self._session.close()
+            ic(self._session.closed)
 
     async def get_data(self, url: str) -> Result[dict, str]:
         ic()
+        if self._session is None:
+            return Err("Session not initialized.")
         async with self._session as session:
             async with session.get(url) as response:
                 ic(response.status)
                 if response.status != 200:
                     return Err(f"Error fetching data. HTTP Status: {response.status}")
-                return Ok(await response.json())
+                data = await response.json()
+                ic(data)
+                return Ok(data)
