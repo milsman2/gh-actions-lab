@@ -7,7 +7,7 @@ ENV PIP_DEFAULT_TIMEOUT=100 \
 
 WORKDIR /app
 
-COPY . .
+COPY requirements.txt .
 
 RUN set -ex \
     && apt-get update \
@@ -16,5 +16,8 @@ RUN set -ex \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install -r requirements.txt
+RUN pip install -r ./requirements.txt
+
+COPY src/ ./src/
+
 CMD [ "python", "-u", "-m", "src.main" ]
