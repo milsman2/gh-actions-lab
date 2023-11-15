@@ -3,7 +3,7 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "my_package"
+name = "gh_actions_lab"
 authors = [
     {name = "Miles Kane", email = "milsman2@gmail.com"},
 ]
