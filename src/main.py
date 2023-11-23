@@ -42,6 +42,7 @@ async def main():
             ic(data)
         case Err(err):
             ic(err)
+    await asyncio.sleep(3)
 
 
 if __name__ == "__main__":
