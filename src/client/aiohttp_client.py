@@ -25,7 +25,7 @@ class AioHttpClient:
     async def __aexit__(self, *args, **kwargs) -> None:
         ic()
         if self._session is not None:
-            if self._session.closed:
+            if self._session.closed is False:
                 await self._session.close()
             ic(self._session.closed)
 
