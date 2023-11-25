@@ -34,6 +34,8 @@ jobs:
       - name: Print sunrise/sunset data
         run: |
           python -m src.main
+        env:
+          TEST_URL: ${{ secrets.TEST_URL }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
   DockerBuild:
     runs-on: ubuntu-latest
