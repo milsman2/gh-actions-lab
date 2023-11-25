@@ -17,7 +17,8 @@ async def get_sun_times() -> Result[SunResults, str]:
     async with AioHttpClient() as http_client:
         ic()
         if not app_settings.TEST_URL:
-            return Err(f"{app_settings.TEST_URL}")
+            return Err("No URL to test")
+        ic(app_settings.TEST_URL)
         results = await http_client.get_data(str(app_settings.TEST_URL))
         match results:
             case Ok(data):
