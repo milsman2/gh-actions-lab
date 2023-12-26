@@ -35,10 +35,30 @@ async def get_sun_times() -> Result[SunResults, str]:
                 return Err(err)
 
 
+async def get_test_url() -> Result[dict, str]:
+    ic()
+    async with AioHttpClient() as http_client:
+        ic()
+        results = await http_client.get_data("https://httpbin.org/get")
+        match results:
+            case Ok(data):
+                ic(type(data))
+                return Ok(data)
+            case Err(err):
+                ic(err)
+                return Err(err)
+
+
 async def main():
     ic()
     sun_times = await get_sun_times()
     match sun_times:
+        case Ok(data):
+            ic(data)
+        case Err(err):
+            ic(err)
+    test_url = await get_test_url()
+    match test_url:
         case Ok(data):
             ic(data)
         case Err(err):
