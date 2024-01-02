@@ -7,19 +7,19 @@ from icecream import ic
 from pydantic import ValidationError
 from result import Err, Ok, Result
 
-from src.schemas import SunResults
 from src.client import AioHttpClient
 from src.config import app_settings
+from src.schemas import SunResults
 
 
 async def get_sun_times() -> Result[SunResults, str]:
     ic()
     async with AioHttpClient() as http_client:
         ic()
-        if not app_settings.TEST_URL:
+        if not app_settings.SUNRISE_SUNSET_URL:
             return Err("No URL to test")
-        ic(app_settings.TEST_URL)
-        results = await http_client.get_data(str(app_settings.TEST_URL))
+        ic(app_settings.SUNRISE_SUNSET_URL)
+        results = await http_client.get_data(str(app_settings.SUNRISE_SUNSET_URL))
         match results:
             case Ok(data):
                 ic(type(data))
@@ -35,30 +35,10 @@ async def get_sun_times() -> Result[SunResults, str]:
                 return Err(err)
 
 
-async def get_test_url() -> Result[dict, str]:
-    ic()
-    async with AioHttpClient() as http_client:
-        ic()
-        results = await http_client.get_data("https://httpbin.org/get")
-        match results:
-            case Ok(data):
-                ic(type(data))
-                return Ok(data)
-            case Err(err):
-                ic(err)
-                return Err(err)
-
-
 async def main():
     ic()
     sun_times = await get_sun_times()
     match sun_times:
-        case Ok(data):
-            ic(data)
-        case Err(err):
-            ic(err)
-    test_url = await get_test_url()
-    match test_url:
         case Ok(data):
             ic(data)
         case Err(err):

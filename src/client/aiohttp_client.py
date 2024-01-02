@@ -1,10 +1,11 @@
 """
 AIOHTTP Client module
 """
+from typing import Optional
+
 import aiohttp
 from icecream import ic
 from result import Err, Ok, Result
-from typing import Optional
 
 
 class AioHttpClient:
