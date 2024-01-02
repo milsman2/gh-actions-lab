@@ -2,7 +2,7 @@ name: GitHub Actions Demo
 run-name: ${{ github.actor }} made a push.
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  RunPythonTests:
     runs-on: ubuntu-latest
     environment: build
     steps:
@@ -42,6 +42,7 @@ jobs:
   DockerBuild:
     runs-on: ubuntu-latest
     environment: build
+    needs: RunPythonTests
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
